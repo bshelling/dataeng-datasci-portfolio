@@ -67,7 +67,7 @@ def createDataframe(data: list):
 # Zipcodes with the value of none
 def transformZip(index):
     if index["zip"] == "None":
-        return 0
+        return "0"
     else:
         return index["zip"]
 
@@ -81,8 +81,8 @@ def modifyFieldsExport(df):
 def treatmissingDate(df): 
     placeholder_date = "2025-01-01T00:00"
     fmt_placeholder = "%Y-%m-%dT%H:%M"
-    df["timearrive"].fillna(datetime.strptime(placeholder_date,fmt_placeholder),inplace=True)
-    df["timedispatch"].fillna(datetime.strptime(placeholder_date,fmt_placeholder),inplace=True)
+    df["timearrive"].fillna(pd.to_datetime(placeholder_date,format=fmt_placeholder))
+    df["timedispatch"].fillna(pd.to_datetime(placeholder_date,format=fmt_placeholder))
     return df
 
 
