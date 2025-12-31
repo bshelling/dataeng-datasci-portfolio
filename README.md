@@ -31,3 +31,8 @@ Once ingestion was complete, the next challenge was consolidating and preparing 
 Finally, the cleaned and transformed data was loaded into a database table using a separate transformation and load script (transformload.py), creating a stable foundation for downstream analytics and modeling.
 
 This week established the Bronze → Silver pipeline, ensuring the data is repeatable, scalable, and ready for further analysis in subsequent weeks.
+
+
+#### Week 2
+Week 2 was spent creating the silver layer. Refactoring was done to fix the performance issues when querying the partitioned data. 
+Because the data was pulled from an api,the paginated pages needed to batched into larger files (parquet) to improve efficiency. Previously there were more smaller files which caused querying issues with DuckDB.
